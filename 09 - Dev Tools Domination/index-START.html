@@ -1,98 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Console Tricks!</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
 
-  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+    <script>
+      const dogs = [
+        { name: "Snickers", age: 2 },
+        { name: "hugo", age: 8 },
+      ];
+      const variable = "highly variable";
 
-  <script>
-    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
-    const variable = "highly variable";
+      function makeGreen() {
+        const p = document.querySelector("p");
+        p.style.color = "#BADA55";
+        p.style.fontSize = "50px";
+      }
 
-    function makeGreen() {
-      const p = document.querySelector('p');
-      p.style.color = '#BADA55';
-      p.style.fontSize = '50px';
-    }
+      // Regular
+      console.log("hello");
 
-    // Regular
-    console.log('hello');
+      // Interpolated
 
-    // Interpolated
+      console.log("Hello I am a %s string!", variable); //passes variable into string
+      console.log(`Hello I am a ${variable} string!`); // ES6 way
 
-    console.log('Hello I am a %s string!', variable); //passes variable into string
-    console.log(`Hello I am a ${variable} string!`); // ES6 way
+      // Styled
+      console.log(
+        `%c I am some styled text`,
+        `font-size: 20px; text-shadow: 5px`
+      );
 
-    // Styled
-    console.log(`%c I am some styled text`, `font-size: 20px; text-shadow: 5px`);
+      // warning!
+      console.warn(`OH Noo`);
 
-    // warning!
-    console.warn(`OH Noo`);
+      // Error :|
 
-    // Error :|
+      console.error(`OH Noo`);
 
-    console.error(`OH Noo`);
+      // Info
+      console.info(`Fun fact`);
 
-    // Info
-    console.info(`Fun fact`);
+      // Testing
+      const p = document.querySelector("p");
 
-    // Testing
-    const p = document.querySelector('p');
+      // if false, assert will throw error
+      console.assert(p.classList.contains("ouch"), "That is wrong!");
 
-       // if false, assert will throw error 
-    console.assert(p.classList.contains('ouch'), 'That is wrong!');
+      // clearing
+      console.clear();
 
+      // Viewing DOM Elements
+      console.log(p);
+      console.dir(p); // shows directory
 
-    // clearing
-    console.clear();
+      console.clear();
 
-    // Viewing DOM Elements
-    console.log(p);
-    console.dir(p); // shows directory
+      // Grouping together
 
-    console.clear();
-
-    // Grouping together
-
-    dogs.forEach(dog => {
-      console.group(`${dog.name}`);
-      console.log(`This is ${dog.name}.`);
-      console.log(`${dog.name} is ${dog.age} years old.`);
-      console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
-      console.groupEnd(`${dog.name}`);
-    });
-
-       dogs.forEach(dog => {
-      console.groupCollapsed(`${dog.name}`);
-      console.log(`This is ${dog.name}.`);
-      console.log(`${dog.name} is ${dog.age} years old.`);
-      console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
-      console.groupEnd(`${dog.name}`);
-    });
-    // counting
- console.count('Wes');
-  console.count('Wes');
-   console.count('Steve');
-    console.count('Wes');
-     console.count('Wes');
-      console.count('Seve');
-       console.count('Wes');
-    // timing
-
-    console.time('fetching data');
-    fetch('https://api.github.com/users/wesbos')
-      .then(data => data.json())
-      .then(data => {
-        console.timeEnd('fetching data');
-        console.log(data);
+      dogs.forEach((dog) => {
+        console.group(`${dog.name}`);
+        console.log(`This is ${dog.name}.`);
+        console.log(`${dog.name} is ${dog.age} years old.`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+        console.groupEnd(`${dog.name}`);
       });
 
+      dogs.forEach((dog) => {
+        console.groupCollapsed(`${dog.name}`);
+        console.log(`This is ${dog.name}.`);
+        console.log(`${dog.name} is ${dog.age} years old.`);
+        console.log(`${dog.name} is ${dog.age * 7} dog years old.`);
+        console.groupEnd(`${dog.name}`);
+      });
+      // counting
+      console.count("Wes");
+      console.count("Wes");
+      console.count("Steve");
+      console.count("Wes");
+      console.count("Wes");
+      console.count("Seve");
+      console.count("Wes");
+      // timing
+
+      console.time("fetching data");
+      fetch("https://api.github.com/users/wesbos")
+        .then((data) => data.json())
+        .then((data) => {
+          console.timeEnd("fetching data");
+          console.log(data);
+        });
+
       console.table(dogs);
-
-
-  </script>
-</body>
+    </script>
+  </body>
 </html>
